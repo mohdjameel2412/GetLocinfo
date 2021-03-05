@@ -1,0 +1,101 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1a1a1a;
+    text-align: left;
+    height: 100%;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.map {
+    flex: 1;
+    background: #f0f0f0;
+}
+
+.info {
+    padding: 1rem;
+    margin: 0;
+    background-color: gold;
+}
+.device {
+    padding: 1rem;
+    margin: 0;
+    height: 2%;
+}
+
+.info.error {
+    color: #fff;
+    background: #dc3545;
+}
+.button {
+    display: block;
+	margin-left: 80%;
+    margin-top: -11%;
+    padding-bottom: 12px;
+    
+    border-radius: 2mm;
+	font-size:16px;
+	cursor:pointer;
+	transition: all 0.3 ease-in-out;
+    max-width: 100px;
+    text-align: center;
+    text-decoration: none;
+    
+}
+#logout {
+    display: flex;
+    margin-top:-17px;
+    margin-bottom: 2px;
+    width: 100%;
+    height: 20px;
+    border: gold;
+    border-radius: 2mm;
+    background: linear-gradient(120deg,#3498db,#8e44ad,#3498db);
+    background-size: 200%;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    justify-content: center ;
+        
+}
+#logout:hover{
+    background-position: right;
+}
+.current {
+    padding-left: 1rem ;
+    width: fit-content;
+    max-width: 200px;
+}
+#check {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    border: gold;
+    border-radius: 2mm;
+    background: linear-gradient(120deg,#d41041,#8e44ad,#3498db);
+    background-size: 200%;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    justify-content: center ;
+
+
+}
+

